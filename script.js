@@ -1,9 +1,3 @@
-// ===============================
-// FRONTEND – Taylor Fraction Chatbot
-// ===============================
-
-// Render backend adresinizi buraya yazın, örneğin:
-// const BACKEND_URL = "https://taylor-chatbot-backend.onrender.com";
 const BACKEND_URL = "https://virtualstudent.onrender.com";
 
 // Tüm sohbeti backend'e yollamak için tutulacak mesajlar
@@ -19,8 +13,7 @@ const sendBtn = document.getElementById("sendBtn");
 const saveBtn = document.getElementById("saveBtn");
 
 // İlk açıklama mesajı (UI ve konuşma için)
-const initialGreeting =
-  "Merhaba öğretmenim… Kesir resimleriyle ilgili bana sorular sorabilirsiniz.";
+const initialGreeting = "Merhaba öğretmenim…";
 
 addMessageToUI("Taylor", initialGreeting, "taylor");
 conversation.push({
@@ -28,7 +21,7 @@ conversation.push({
   content: initialGreeting,
 });
 
-// Form gönderme (Enter / Gönder)
+// Form gönderme (Gönder butonu veya enter ile)
 formEl.addEventListener("submit", async (e) => {
   e.preventDefault();
   const text = inputEl.value.trim();
@@ -65,7 +58,7 @@ formEl.addEventListener("submit", async (e) => {
     console.error(err);
     addMessageToUI(
       "Sistem",
-      "Bir hata oluştu. Backend URL'sini ve Render servisinin çalıştığını kontrol edin.",
+      "Bir hata oluştu. Backend URL'sini ve Render servisinin çalıştığını kontrol edin. Detay: " + err.message,
       "taylor"
     );
   } finally {
@@ -74,6 +67,21 @@ formEl.addEventListener("submit", async (e) => {
     inputEl.focus();
   }
 });
+
+// ⬇⬇⬇ BURASI YENİ: Enter ile mesaj gönderme (Shift+Enter = yeni satır) ⬇⬇⬇
+inputEl.addEventListener("keydown", (e) => {
+  // Sadece Enter ve Shift'e basılmamışsa
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault(); // yeni satır eklemesini engelle
+    // Formu programatik olarak submit et
+    if (formEl.requestSubmit) {
+      formEl.requestSubmit();
+    } else {
+      formEl.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    }
+  }
+});
+// ⬆⬆⬆ YENİ KISIM BİTTİ ⬆⬆⬆
 
 // Kaydet butonu: sohbeti .txt olarak indir
 saveBtn.addEventListener("click", () => {
