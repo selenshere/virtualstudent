@@ -1,8 +1,4 @@
 const BACKEND_URL = "https://virtualstudent.onrender.com";
-
-// Tüm sohbeti backend'e yollamak için tutulacak mesajlar
-// system prompt'u backend tarafında ekliyoruz, burada sadece
-// teacher (user) ve Taylor (assistant) mesajları tutuluyor.
 let conversation = [];
 
 // DOM elemanları
@@ -13,7 +9,7 @@ const sendBtn = document.getElementById("sendBtn");
 const saveBtn = document.getElementById("saveBtn");
 
 // İlk açıklama mesajı (UI ve konuşma için)
-const initialGreeting = "Merhaba öğretmenim…";
+const initialGreeting = "Hello…";
 
 addMessageToUI("Taylor", initialGreeting, "taylor");
 conversation.push({
@@ -41,7 +37,7 @@ formEl.addEventListener("submit", async (e) => {
 
   // Butonu kilitle
   sendBtn.disabled = true;
-  sendBtn.textContent = "Taylor düşünüyor...";
+  sendBtn.textContent = "Taylor is thinking...";
 
   try {
     const reply = await callBackend(conversation);
@@ -57,7 +53,7 @@ formEl.addEventListener("submit", async (e) => {
   } catch (err) {
     console.error(err);
     addMessageToUI(
-      "Sistem",
+      "System",
       "Bir hata oluştu. Backend URL'sini ve Render servisinin çalıştığını kontrol edin. Detay: " + err.message,
       "taylor"
     );
@@ -81,7 +77,6 @@ inputEl.addEventListener("keydown", (e) => {
     }
   }
 });
-// ⬆⬆⬆ YENİ KISIM BİTTİ ⬆⬆⬆
 
 // Kaydet butonu: sohbeti .txt olarak indir
 saveBtn.addEventListener("click", () => {
