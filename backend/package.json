@@ -1,14 +1,6 @@
 {
-  "name": "taylor-fraction-chatbot-backend",
-  "version": "1.0.0",
-  "description": "Taylor fractional reasoning chatbot backend for Render",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "node-fetch": "^2.7.0"
-  }
+ "name":"taylor-backend",
+ "version":"1.0.0",
+ "dependencies":{"express":"^4.18.2","cors":"^2.8.5","node-fetch":"^2.7.0"},
+ "scripts":{"start":"node server.js"}
 }

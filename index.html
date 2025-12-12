@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Taylor Fraction Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Taylor – Kesir Öğrencisi Chatbot</h1>
+    <div class="info-box">
+      <p>Bu sayfa öğretmen ile Taylor arasındaki konuşmayı gösterir.</p>
+    </div>
+    <div id="chat" class="chat"></div>
+    <form id="chatForm" class="input-area">
+      <label for="userInput" class="input-label">Öğretmen sorusu:</label>
+      <textarea id="userInput" rows="2"></textarea>
+      <div class="buttons">
+        <button type="submit" id="sendBtn">Gönder</button>
+        <button type="button" id="saveBtn">Kaydet (.txt)</button>
+      </div>
+    </form>
+    <p class="footer small">script.js içindeki BACKEND_URL'i Render URL'inle değiştir.</p>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
