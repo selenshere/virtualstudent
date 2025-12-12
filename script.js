@@ -4,7 +4,7 @@
 
 // Render backend adresinizi buraya yazın, örneğin:
 // const BACKEND_URL = "https://taylor-chatbot-backend.onrender.com";
-const BACKEND_URL = "https://YOUR-RENDER-SERVICE.onrender.com";
+const BACKEND_URL = "https://virtualstudent.onrender.com";
 
 // Tüm sohbeti backend'e yollamak için tutulacak mesajlar
 // system prompt'u backend tarafında ekliyoruz, burada sadece
